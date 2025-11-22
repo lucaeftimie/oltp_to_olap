@@ -1,0 +1,8 @@
+delete rows up to A10 / A11 ("TIME" cell) checked
+if geo codes -> delete column
+
+make the program take the file_name from the legend.xlsx
+make the code reusable for the each file
+check for compatibility issues of the files
+check the sheets and decide what to do with them
+aggregate the mortalitiy rate
