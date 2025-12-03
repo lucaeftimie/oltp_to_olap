@@ -1,7 +1,7 @@
 # mac/linux 
-  # setwd("~/Desktop/oltp_to_olap/make_final_data")
+  setwd("~/Desktop/oltp_to_olap/make_final_data")
 #windows
-  setwd("C:\\Users\\lucac\\Desktop\\oltp_to_olap\\make_final_data\\")
+  # setwd("C:\\Users\\lucac\\Desktop\\oltp_to_olap\\make_final_data\\")
 
 library(data.table)
 library(openxlsx)
@@ -10,6 +10,26 @@ library(dplyr)
 
 # Source the tidy functions 
 source("./code/functions.R")
+
+# Reset cwd to the home of the project
+setwd("~/Desktop/oltp_to_olap/make_final_data")
+# change the names of some sheets
+# new name = better representation of the content
+
+specific_names_file_path <- paste(getwd(), "/data/specific_names.xlsx", sep="")
+no_of_sheets <- length(getSheetNames(specific_names_file_path))
+sheet_names <- getSheetNames(specific_names_file_path)
+
+specific_names <- vector("list", no_of_sheets)
+names(specific_names) <- sheet_names
+
+for (sh in 1:no_of_sheets){
+    specific_names_sheet<- openxlsx::read.xlsx(specific_names_file_path, sheet = sh, fillMergedCells = TRUE, colNames = TRUE, rowNames = FALSE);
+    specific_names[[sheet_names[sh]]] <- specific_names_sheet
+}
+
+
+
 
 # Open the legend of the datatables
 legend <- openxlsx::read.xlsx(paste(getwd(), "/data/legend.xlsx", sep=""))
@@ -28,6 +48,10 @@ for(i in 1:nrow(legend)){
     all_dfs[[nm]] <- file_sheets[[nm]]
   }
 }
+
+
+
+
 
 names(all_dfs)
 
@@ -87,7 +111,7 @@ all_dfs <- append(all_dfs, setNames(list(pop_tot_20_64), "pop_tot_20_64_Sheet_1"
   
     # remove_sheets(getwd(), vector_sheets_to_remove,"gdp")
   
-  # delete from gfcf
+  # delete all from gfcf
   dfs_to_drop <- c()
   vector_sheets_to_remove <- c(1:8)
   indicator_to_drop <- "gfcf"
@@ -101,11 +125,18 @@ all_dfs <- append(all_dfs, setNames(list(pop_tot_20_64), "pop_tot_20_64_Sheet_1"
   
   
   
-  names(all_dfs)
-  
-  
-  
-    # remove_sheets(getwd(), vector_sheets_to_remove,"gfcf")
+names(all_dfs)
+ 
+# remove_sheets(getwd(), vector_sheets_to_remove,"gfcf")
+
+counter <- 1
+for(i in 1:length(specific_names)){
+  for(j in 1:nrow(specific_names[[i]][1])){
+      names(all_dfs)[counter] <- paste(sheet_names[i], specific_names[[i]][[1]][j], sep="_")
+    counter <- counter + 1
+  }
+}
+
 
 
 # Transform data from a tabular version to a columnar version
