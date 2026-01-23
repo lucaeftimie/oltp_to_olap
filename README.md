@@ -5,7 +5,7 @@
 # Purpose
   The purpose of this repository is to clean the Excel files. The data will be subsequently used in various data analysis algorithms.
 </br></br>
-  All sheet from each Excel file are processed and written to individual csv files, found in the "outputs_csv" folder.
+  All sheets from each Excel file are processed and written to individual csv files, found in the "outputs_csv" folder.
 </br>
 #### Notice: Some sheets have been deleted because they are not relevant for the research paper.
 </br>
