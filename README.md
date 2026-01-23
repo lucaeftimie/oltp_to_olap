@@ -21,6 +21,7 @@
 
 ### Columnar format is clearer in terms of meaning and all data can be stored in a single sheet.
 
+<img width="476" height="580" alt="image" src="https://github.com/user-attachments/assets/52b6e0cd-1f38-41a8-851c-b06be1861250" />
 
-<img width="479" height="572" alt="screenshot_after_better_version" src="https://github.com/user-attachments/assets/8b17426e-16cb-437f-a0fd-e054b5c61966" />
+
 
