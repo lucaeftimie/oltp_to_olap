@@ -1,13 +1,12 @@
 # Introduction
   This repository is part of my bachelor thesis.
-  The title of the paper is:  <b>"Analysis of the labor market among European countries"</b>
+  The title of the paper is:  <b>"Labor market analysis across European countries"</b>
 
 # Purpose
   The purpose of this repository is to clean the Excel files. The data will be subsequently used in various data analysis algorithms.
 </br></br>
   All sheets from each Excel file are processed and written to individual csv files, found in the "outputs_csv" folder.
 </br>
-#### Notice: Some sheets have been deleted because they are not relevant for the research paper.
 </br>
 </br>
 
